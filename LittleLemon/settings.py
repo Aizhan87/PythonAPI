@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'DebugExampleApp',
     'rest_framework',
     'debug_toolbar',
+    'LittlelemonAPI',
 ]
 
 MIDDLEWARE = [
