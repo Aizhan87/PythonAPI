@@ -8,6 +8,8 @@ from .serializers import MenuItemSerializer
 from .serializers import CategorySerializer
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, EmptyPage
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
 
 @api_view(['GET', 'POST'])
 def menu_items(request):
@@ -63,3 +65,8 @@ def category_detail(request, pk):
     category = get_object_or_404(Category,pk=pk)
     serialized_category = CategorySerializer(category)
     return Response(serialized_category.data) 
+
+@api_view()
+@permission_classes([IsAuthenticated])
+def secret(request):
+    return Response({'message':'Some secret message'})

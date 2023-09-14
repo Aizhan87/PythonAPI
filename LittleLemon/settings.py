@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'debug_toolbar',
     'LittlelemonAPI',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -137,5 +138,8 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
         'rest_framework_xml.renderers.XMLRenderer',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
 }
