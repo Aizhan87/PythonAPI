@@ -13,6 +13,7 @@ from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from .throttles import TenCallsPerMinute
 
 @api_view(['GET', 'POST'])
+# @throttle_classes([UserRateThrottle])
 def menu_items(request):
     if request.method == 'GET':
         items = MenuItem.objects.select_related('category').all()

@@ -23,4 +23,6 @@ urlpatterns = [
     path('calc/', include('DebugExampleApp.urls')), 
     path('__debug__/', include('debug_toolbar.urls')), 
     path('apis/', include('LittlelemonAPI.urls')), 
+    path('auth/', include('djoser.urls')), 
+    path('auth/', include('djoser.urls.authtoken')), 
 ]
