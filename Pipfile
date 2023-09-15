@@ -9,6 +9,7 @@ djangorestframework = "*"
 django-debug-toolbar = "*"
 djangorestframework-xml = "*"
 djoser = "*"
+djangorestframework-simplejwt = "~=5.2.1"
 
 [dev-packages]
 

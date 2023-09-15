@@ -13,6 +13,5 @@ urlpatterns = [
     path('throttle-check-auth/', views.throttle_check_auth),
 ]
 
-# http://127.0.0.1:8000/auth/token/login/
-# http://127.0.0.1:8000/auth/users/me/
-# http://127.0.0.1:8000/auth/users/
+
+# http://127.0.0.1:8000/apis/secret
