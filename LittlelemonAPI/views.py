@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes, throttle_classes
 from rest_framework import status 
 from .models import MenuItem
 from .models import Category 
@@ -9,7 +9,8 @@ from .serializers import CategorySerializer
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, EmptyPage
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.decorators import permission_classes
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
+from .throttles import TenCallsPerMinute
 
 @api_view(['GET', 'POST'])
 def menu_items(request):
@@ -81,3 +82,13 @@ def manager_view(request):
 
 # johndoe token = "6954a798abee2dd79ea9355efb2d0b2a4aee8b33"
 # jimmydoe token = "f25cd84dae39121d4b93e97f4594861ffb85eedd"
+
+@api_view()
+@throttle_classes([AnonRateThrottle])
+def throttle_check(request):
+    return Response({'message': 'successful'})
+
+@api_view()
+@throttle_classes([TenCallsPerMinute])
+def throttle_check_auth(request):
+    return Response({'message': 'message for the logged in users only'})
