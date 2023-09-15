@@ -11,7 +11,9 @@ urlpatterns = [
     path('manager-view/', views.manager_view),
     path('throttle-check/', views.throttle_check),
     path('throttle-check-auth/', views.throttle_check_auth),
+    path('groups/manager/users', views.managers),
 ]
 
 
 # http://127.0.0.1:8000/apis/secret
+# http://127.0.0.1:8000/apis/groups/manager/users
